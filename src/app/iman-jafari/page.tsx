@@ -1,25 +1,18 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import Image from "next/image";
+import { motion } from "framer-motion";
+
+import Contact from "./_components/Contact";
 import ShinyText from "./_components/ShinyText/ShinyText";
-import FallingText from "./_components/FallingText/FallingText";
+import Particles from "./_components/Particles/Particles";
+import Marquee from "./_components/marquee";
+import Flip from "./_components/flip";
+import Card from "./_components/Card";
 
 import { useScroll } from "framer-motion";
 import Lenis from "lenis";
 
-import Card from "./_components/Card";
-import Contact from "./_components/Contact";
-
 import { projects } from "../../../constance";
-import dynamic from "next/dynamic";
-
-const TextPressure = dynamic(
-  () => import("./_components/TextPressure/TextPressure"),
-  {
-    ssr: false,
-  }
-);
-
 export default function Home() {
   const container = useRef(null);
 
@@ -42,86 +35,73 @@ export default function Home() {
   });
 
   return (
-    <main className=" bg-zinc-950 p-6 h-screen">
-      <section className="w-[80%] mx-auto">
-        <div className="my-5 z-40 relative">
-          <TextPressure
-            text="front-end-developer"
-            flex={true}
-            alpha={false}
-            stroke={false}
-            width={true}
-            weight={true}
-            italic={true}
-            textColor="#ffffff"
-            minFontSize={36}
+    <main className="p-6">
+      <div className="relative ">
+        <div
+          className="flex flex-col"
+          style={{ width: "100%", height: "100vh" }}
+        >
+          <Particles
+            particleColors={["#ffffff", "#ffffff"]}
+            particleCount={900}
+            particleSpread={40}
+            speed={0.3}
+            particleBaseSize={100}
+            moveParticlesOnHover={true}
+            alphaParticles={false}
+            disableRotation={true}
           />
-        </div>
 
-        <div>
-          <Image
-            alt="react-logo"
-            width={600}
-            height={400}
-            src="/iman/react.png"
-            className="w-[500px] fixed bottom-10 -right-36 blur-md"
-          />
-        </div>
-        <div>
-          <Image
-            alt="next-logo"
-            width={600}
-            height={400}
-            src="/iman/next.png"
-            className="w-[500px] fixed -top-10 -left-32 blur-md "
-          />
-        </div>
-
-        <div>
-          <FallingText
-            text={`Html Css Sass Tailwind Mui Shadcn Javascript Typescript Git Github React Next Redux Zustand Leaflet react-query react-table Docker Drizzle`}
-            highlightWords={[
-              "Css",
-              "Tailwind",
-              "Shadcn",
-              "Typescript",
-              "Github",
-              "Zustand",
-              "React",
-              "Drizzle",
-              "react-query",
-            ]}
-            highlightClass="highlighted"
-            trigger="click"
-            backgroundColor="transparent"
-            wireframes={false}
-            gravity={0.2}
-            fontSize="1.5rem"
-            mouseConstraintStiffness={0.1}
-          />
-        </div>
-
-        <div className="text-center absolute bottom-20 left-1/2 transform -translate-x-1/2">
-          <ShinyText text="projects !" disabled={false} speed={1.7} />
-        </div>
-
-        <Contact />
-        <div className="mt-[50vh]" ref={container}>
-          {projects.map((project, i) => {
-            const targetScale = 1 - (projects.length - i) * 0.05;
-            return (
-              <Card
-                key={project.id}
-                {...project}
-                i={i}
-                progress={scrollYProgress}
-                range={[i * 0.25, 1]}
-                targetScale={targetScale}
+          <div className="absolute left-1/2 transform -translate-x-1/2 bottom-[480px] md:bottom-[375px]">
+            <motion.div
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className=" text-neutral-100 "
+            >
+              <article className="space-y-4 text-center">
+                {["Front-End", "Developer"].map((item) => (
+                  <Flip key={item}>{item}</Flip>
+                ))}
+              </article>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25 }}
+              className="text-center mt-2 text-[12px] md:text-[16px]"
+            >
+              <ShinyText
+                text="I am a front-end developer at Zock Studio!"
+                disabled={false}
+                speed={3}
               />
-            );
-          })}
+            </motion.div>
+          </div>
         </div>
+      </div>
+
+      <section className="w-full md:w-[80%] mx-auto mt-44">
+        <Marquee />
       </section>
+
+      <Contact />
+
+      <div className="mt-[10vh]" ref={container}>
+        {projects.map((project, i) => {
+          const targetScale = 1 - (projects.length - i) * 0.05;
+          return (
+            <Card
+              key={project.id}
+              {...project}
+              i={i}
+              progress={scrollYProgress}
+              range={[i * 0.25, 1]}
+              targetScale={targetScale}
+            />
+          );
+        })}
+      </div>
     </main>
   );
 }

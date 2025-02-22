@@ -1,5 +1,4 @@
 import React from "react";
-import { IoMdArrowDown } from "react-icons/io";
 
 interface ShinyTextProps {
   text: string;
@@ -28,10 +27,7 @@ const ShinyText: React.FC<ShinyTextProps> = ({
         animationDuration: animationDuration,
       }}
     >
-      <p className="flex items-center gap-2 tracking-[4px] mt-6 text-xl ">
-        <IoMdArrowDown className="mt-1" />
-        {text}
-      </p>
+      {text}
     </div>
   );
 };
