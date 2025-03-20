@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install --frozen-lockfile
+RUN npm install --legacy-peer-deps --verbose
 
 # Copy the rest of the application files
 COPY . .

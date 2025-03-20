@@ -27,7 +27,6 @@
 		"tailwindcss-animate": "^1.0.7",
 		"@loaders.gl/core": "^4.3.3",
 		"@loaders.gl/gltf": "^4.3.3",
-		"@next/swc-linux-x64-gnu": "^15.2.3",
 		"@react-three/drei": "^10.0.4",
 		"@react-three/fiber": "^9.1.0",
 		"@react-three/rapier": "^2.0.0",
