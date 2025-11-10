@@ -9,6 +9,7 @@ jobs:
     steps:
       - name: Pull latest code
         run: |
+          git config --global --add safe.directory /srv/moon-studio
           cd /srv/moon-studio
           git fetch origin main
           git checkout main
