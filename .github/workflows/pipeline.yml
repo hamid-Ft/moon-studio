@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Pull latest code
         run: |
-          cd /srv/sandoghinet-inventory-backend
+          cd /srv/moon-studio
           git fetch origin main
           git checkout main
           git pull
