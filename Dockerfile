@@ -13,6 +13,8 @@ RUN npm install --legacy-peer-deps --verbose
 # Copy the rest of the application files
 COPY . .
 
+ENV NODE_OPTIONS="--max-old-space-size=960"
+
 # Build the Next.js app
 RUN npm run build
 
