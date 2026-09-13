@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="moonlancer-cyan" x1="17" y1="14" x2="47" y2="51" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#a8f0ff"/>
+      <stop offset="0.52" stop-color="#72e5ff"/>
+      <stop offset="1" stop-color="#33d6ff"/>
+    </linearGradient>
+    <mask id="moonlancer-crescent">
+      <rect width="64" height="64" fill="black"/>
+      <circle cx="30" cy="32" r="19" fill="white"/>
+      <circle cx="39" cy="24" r="18" fill="black"/>
+    </mask>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#080b12" stroke="#29414b" stroke-width="1.5"/>
+  <circle cx="30" cy="32" r="19" fill="url(#moonlancer-cyan)" mask="url(#moonlancer-crescent)"/>
+</svg>

@@ -21,9 +21,9 @@ const ogLocales: Record<Locale, string> = {
 
 const siteCopy: Record<Locale, { title: string; description: string }> = {
 	en: {
-		title: "Moonlancer | Connected Product Systems Studio",
+		title: "Moonlancer | Custom Retail, POS, Payment & Kiosk Software",
 		description:
-			"Moonlancer designs and builds connected commerce, ERP, fintech, field-operation, and decision systems for operations that cannot break.",
+			"Moonlancer designs and builds custom retail platforms across POS, payments, credit and BNPL, kiosks, ERP, inventory, and multi-store operations.",
 	},
 	fa: {
 		title: "Moonlancer | طراحی و توسعه نرم‌افزارهای عملیاتی",
@@ -45,6 +45,11 @@ export const siteConfig = {
 		"retail software studio",
 		"connected commerce systems",
 		"POS integration",
+		"custom POS software",
+		"BNPL software",
+		"self-service kiosk",
+		"Rust development",
+		"Tauri applications",
 		"ERP integration",
 		"Next.js development",
 		"React development",
@@ -77,26 +82,45 @@ type RouteMetadataDefinition = {
 	description: LocalizedText;
 	path: ProfileRoute;
 	keywords?: string[];
+	image?: {
+		url: string;
+		width: number;
+		height: number;
+		alt: LocalizedText;
+	};
 };
 
 export const profileMetadata: Record<ProfileRoute, RouteMetadataDefinition> = {
 	"/hamid-ft": {
 		title: {
-			en: "Hamid Fattahi — Freelance Frontend Developer",
-			fa: "حمید فتاحی — توسعه‌دهنده فریلنس فرانت‌اند",
+			en: "Hamid Fattahi — Cross-platform Developer & Moonlancer Co-founder",
+			fa: "حمید فتاحی — توسعه‌دهنده چندسکویی و هم‌بنیان‌گذار Moonlancer",
 		},
 		description: {
-			en: "I build React and Next.js websites, dashboards, and web applications. My work spans marketplace interfaces, payment journeys, map-based tools, and WordPress sites, with close attention to responsive design and the details people use every day.",
-			fa: "وب‌سایت، داشبورد و اپلیکیشن وب را با React و Next.js می‌سازم. تجربه‌ام از رابط‌های مارکت‌پلیس و پرداخت تا ابزارهای نقشه‌محور و سایت‌های وردپرسی را در بر می‌گیرد؛ با توجه ویژه به طراحی واکنش‌گرا و جزئیاتی که کاربر هر روز با آن‌ها کار می‌کند.",
+			en: "Hamid Fattahi is a cross-platform product developer and Moonlancer co-founder, building retail POS, payment, credit and BNPL, kiosk, and operations products with Rust, Tauri, React, and Next.js.",
+			fa: "حمید فتاحی توسعه‌دهنده محصولات چندسکویی و هم‌بنیان‌گذار Moonlancer است و محصولات POS، پرداخت، اعتبار و خرید اقساطی، کیوسک و عملیات خرده‌فروشی را با Rust، Tauri، React و Next.js می‌سازد.",
 		},
 		path: "/hamid-ft",
 		keywords: [
 			"Hamid FT",
-			"frontend developer",
-			"Next.js portfolio",
+			"Moonlancer co-founder",
+			"cross-platform developer",
+			"Rust developer",
+			"Tauri developer",
+			"POS developer",
+			"BNPL software",
 			"TypeScript",
-			"admin panels",
+			"kiosk application",
 		],
+		image: {
+			url: "/hamid-ft.png",
+			width: 1254,
+			height: 1254,
+			alt: {
+				en: "Portrait of Hamid Fattahi",
+				fa: "پرتره حمید فتاحی",
+			},
+		},
 	},
 	"/mohammadreza-parsaeian": {
 		title: {
@@ -316,7 +340,7 @@ export function createSiteMetadata(locale: Locale = defaultLocale): Metadata {
 		},
 		icons: {
 			icon: [
-				{ url: "/favicon.ico", sizes: "any" },
+				{ url: "/moonlancer-mark.svg", type: "image/svg+xml", sizes: "any" },
 				{ url: "/icon-512.png", type: "image/png", sizes: "512x512" },
 			],
 			apple: [
@@ -366,6 +390,7 @@ export function createRouteMetadata({
 	description,
 	path,
 	keywords = [],
+	image,
 	locale = defaultLocale,
 	type = "website",
 }: {
@@ -373,12 +398,26 @@ export function createRouteMetadata({
 	description: LocalizedText;
 	path: string;
 	keywords?: string[];
+	image?: RouteMetadataDefinition["image"];
 	locale?: Locale;
 	type?: "website" | "profile" | "article";
 }): Metadata {
 	const localizedTitle = resolveLocalizedText(title, locale);
 	const localizedDescription = resolveLocalizedText(description, locale);
 	const canonical = localizedPath(path, locale);
+	const socialImage = image
+		? {
+				url: image.url,
+				width: image.width,
+				height: image.height,
+				alt: resolveLocalizedText(image.alt, locale),
+			}
+		: {
+				url: "/icon-512.png",
+				width: 512,
+				height: 512,
+				alt: `${siteConfig.name} icon`,
+			};
 
 	return {
 		title: localizedTitle,
@@ -396,20 +435,13 @@ export function createRouteMetadata({
 			type,
 			locale: ogLocales[locale],
 			alternateLocale: alternateLocales(locale),
-			images: [
-				{
-					url: "/icon-512.png",
-					width: 512,
-					height: 512,
-					alt: `${siteConfig.name} icon`,
-				},
-			],
+			images: [socialImage],
 		},
 		twitter: {
 			card: "summary",
 			title: localizedTitle,
 			description: localizedDescription,
-			images: ["/icon-512.png"],
+			images: [socialImage.url],
 		},
 	};
 }

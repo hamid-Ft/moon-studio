@@ -1,26 +1,26 @@
 import type { Locale } from '@/lib/i18n';
 
-export const contactEmail = 'hello@moonlancer.ir';
+export const contactEmail = 'hamidfattahi.a@gmail.com';
 export const founderLinkedIn = 'https://www.linkedin.com/in/hamidft';
 
 export const siteCopy = {
 	en: {
 		nav: {
-			offers: 'Offers',
+			offers: 'Retail platform',
 			work: 'Work',
 			process: 'Process',
 			team: 'Team',
 			cta: 'Discuss a system problem',
 		},
-		headerDescriptor: 'software studio',
+		headerDescriptor: 'retail systems studio',
 		hero: {
-			eyebrow: 'Retail / ERP / payments / POS',
-			headline: 'One sale.',
-			headlineAccent: 'Everything moves.',
-			body: 'We build the software connecting your stores, payments, inventory, and operations. Every part working together.',
-			primary: 'Discuss your system',
+			eyebrow: 'Enterprise retail / POS / payments / BNPL / kiosk',
+			headline: 'Every store.',
+			headlineAccent: 'One connected system.',
+			body: 'We design and build your own retail platform—from checkout and self-service to payments, credit, inventory, and the control center behind every location.',
+			primary: 'Plan your retail platform',
 			secondary: 'Explore our work',
-			note: 'A founder-led specialist studio for operational software.',
+			note: 'Branded, cross-platform retail software built around your operation.',
 		},
 		problems: {
 			kicker: 'Operational pressure',
@@ -45,6 +45,47 @@ export const siteCopy = {
 				'Faster operational reporting',
 				'Controlled deployment and rollback',
 				'Less manual exception handling',
+			],
+		},
+		platform: {
+			kicker: 'Built around your operation',
+			title: 'Your own retail platform—not another disconnected tool.',
+			intro: 'A product family designed for your brand, your stores, and your operating rules. Start with one critical surface, then connect the rest through a shared commerce core.',
+			core: {
+				label: 'Shared commerce core',
+				title: 'One source of operational truth.',
+				body: 'Catalog, pricing, identity, orders, payment state, inventory, device health, and reporting move through defined contracts instead of fragile handoffs.',
+				stack: ['Rust services', 'ERP & API integration', 'Offline sync', 'Observability'],
+			},
+			products: [
+				{
+					number: '01',
+					title: 'Store POS',
+					body: 'A fast, branded checkout for cashiers with offline continuity, peripheral support, controlled updates, and recovery paths.',
+					platform: 'Linux / Windows / Android',
+					features: ['Checkout', 'Returns', 'Receipts', 'Device control'],
+				},
+				{
+					number: '02',
+					title: 'Payments, credit & BNPL',
+					body: 'Clear customer and operator flows for payment, wallet, credit, installments, refunds, settlement, and reconciliation.',
+					platform: 'POS / Web / Mobile',
+					features: ['Payment state', 'Credit rules', 'Refunds', 'Reconciliation'],
+				},
+				{
+					number: '03',
+					title: 'Self-service kiosk',
+					body: 'Touch-first ordering and checkout shaped for your catalog, store format, accessibility needs, and hardware.',
+					platform: 'Linux / Windows / Android',
+					features: ['Browse', 'Build order', 'Pay', 'Assisted recovery'],
+				},
+				{
+					number: '04',
+					title: 'Operations control center',
+					body: 'A web control plane for stores, devices, catalog, pricing, promotions, inventory, incidents, and rollout visibility.',
+					platform: 'Web / Back office',
+					features: ['Store health', 'Inventory', 'Rollouts', 'Reporting'],
+				},
 			],
 		},
 		offers: {
@@ -166,10 +207,10 @@ export const siteCopy = {
 		},
 		team: {
 			kicker: 'Accountable delivery',
-			title: 'One founder owns the conversation. One technical lead owns each engagement.',
-			founderRole: 'Founder & Engagement Lead',
+			title: 'One co-founder owns the conversation. One technical lead owns each engagement.',
+			founderRole: 'Co-founder & Engagement Lead',
 			founderSummary:
-				'Hamid leads qualification, solution framing, and client accountability, drawing on product-interface work across ecommerce, ERP, logistics, payments, and field operations.',
+				'Hamid has been building Moonlancer with friends since 2023 as a side venture. He leads qualification, solution framing, and client accountability, combining React and Next.js interfaces with Rust and Tauri applications for POS, kiosks, payments, and store operations across Linux, Windows, and Android.',
 			response: 'Qualification response within one business day.',
 			networkTitle: 'Verified delivery network',
 			networkIntro:
@@ -205,21 +246,21 @@ export const siteCopy = {
 	},
 	fa: {
 		nav: {
-			offers: 'خدمات',
+			offers: 'پلتفرم فروشگاهی',
 			work: 'نمونه‌کار',
 			process: 'فرآیند',
 			team: 'تیم',
 			cta: 'گفت‌وگو درباره مسئله سیستم',
 		},
-		headerDescriptor: 'استودیوی تخصصی سیستم‌های نرم افزاری',
+		headerDescriptor: 'استودیوی سیستم‌های خرده‌فروشی',
 		hero: {
-			eyebrow: 'فروشگاه / ERP / پرداخت / POS',
-			headline: 'یک فروش.',
-			headlineAccent: 'همه‌چیز در حرکت.',
-			body: 'نرم‌افزاری می‌سازیم که فروشگاه، پرداخت، موجودی و عملیات شما را به هم متصل کند. همه‌چیز، هماهنگ با هم.',
-			primary: 'گفت‌وگو درباره مسئله سیستم',
+			eyebrow: 'خرده‌فروشی سازمانی / POS / پرداخت / خرید اعتباری / کیوسک',
+			headline: 'هر فروشگاه.',
+			headlineAccent: 'یک سیستم یکپارچه.',
+			body: 'پلتفرم اختصاصی خرده‌فروشی شما را طراحی و پیاده‌سازی می‌کنیم؛ از صندوق و سلف‌سرویس تا پرداخت، اعتبار، موجودی و مرکز کنترل همه شعب.',
+			primary: 'طراحی پلتفرم فروشگاهی',
 			secondary: 'کاوش در نمونه‌کارها',
-			note: 'استودیویی تخصصی و بنیان‌گذارمحور برای نرم‌افزارهای عملیاتی.',
+			note: 'نرم‌افزار اختصاصی و چندسکویی، متناسب با برند و عملیات شما.',
 		},
 		problems: {
 			kicker: 'فشار عملیاتی',
@@ -244,6 +285,47 @@ export const siteCopy = {
 				'گزارش‌گیری عملیاتی سریع‌تر',
 				'استقرار و بازگشت کنترل‌شده',
 				'رسیدگی دستی کمتر به استثناها',
+			],
+		},
+		platform: {
+			kicker: 'ساخته‌شده برای عملیات شما',
+			title: 'پلتفرم اختصاصی خرده‌فروشی شما؛ نه یک ابزار جداافتاده دیگر.',
+			intro: 'خانواده‌ای از محصولات که برای برند، شعب و قواعد عملیاتی شما طراحی می‌شود. از یک نقطه حیاتی شروع می‌کنیم و سپس باقی بخش‌ها را با یک هسته مشترک تجاری به هم متصل می‌کنیم.',
+			core: {
+				label: 'هسته مشترک تجارت',
+				title: 'یک مرجع قابل اتکا برای تمام عملیات.',
+				body: 'کاتالوگ، قیمت، هویت، سفارش، وضعیت پرداخت، موجودی، سلامت دستگاه و گزارش‌گیری به‌جای اتصال‌های شکننده، از قراردادهای روشن عبور می‌کنند.',
+				stack: ['سرویس‌های Rust', 'اتصال ERP و API', 'همگام‌سازی آفلاین', 'پایش‌پذیری'],
+			},
+			products: [
+				{
+					number: '۰۱',
+					title: 'صندوق فروشگاهی',
+					body: 'صندوقی سریع با هویت برند شما برای صندوقدار، با تداوم آفلاین، پشتیبانی تجهیزات، به‌روزرسانی کنترل‌شده و مسیر بازیابی.',
+					platform: 'Linux / Windows / Android',
+					features: ['فروش', 'مرجوعی', 'رسید', 'کنترل دستگاه'],
+				},
+				{
+					number: '۰۲',
+					title: 'پرداخت، اعتبار و خرید اقساطی',
+					body: 'جریان‌های روشن برای مشتری و اپراتور؛ از پرداخت، کیف پول و اعتبار تا اقساط، بازپرداخت، تسویه و مغایرت‌گیری.',
+					platform: 'POS / Web / Mobile',
+					features: ['وضعیت پرداخت', 'قواعد اعتبار', 'بازپرداخت', 'مغایرت‌گیری'],
+				},
+				{
+					number: '۰۳',
+					title: 'کیوسک سلف‌سرویس',
+					body: 'سفارش‌گیری و پرداخت لمسی، متناسب با کاتالوگ، نوع فروشگاه، نیازهای دسترس‌پذیری و سخت‌افزار شما.',
+					platform: 'Linux / Windows / Android',
+					features: ['انتخاب کالا', 'ساخت سفارش', 'پرداخت', 'بازیابی با اپراتور'],
+				},
+				{
+					number: '۰۴',
+					title: 'مرکز کنترل عملیات',
+					body: 'مرکز کنترل وب برای شعب، دستگاه‌ها، کاتالوگ، قیمت، پروموشن، موجودی، رخدادها و مشاهده روند انتشار.',
+					platform: 'Web / Back office',
+					features: ['سلامت شعب', 'موجودی', 'انتشار نسخه', 'گزارش‌گیری'],
+				},
 			],
 		},
 		offers: {
@@ -361,10 +443,10 @@ export const siteCopy = {
 		},
 		team: {
 			kicker: 'تحویل پاسخ‌گو',
-			title: 'یک بنیان‌گذار مسئول گفت‌وگوست؛ هر همکاری یک راهبر فنی مشخص دارد.',
-			founderRole: 'بنیان‌گذار و راهبر همکاری',
+			title: 'یک هم‌بنیان‌گذار مسئول گفت‌وگوست؛ هر همکاری یک راهبر فنی مشخص دارد.',
+			founderRole: 'هم‌بنیان‌گذار و راهبر همکاری',
 			founderSummary:
-				'حمید ارزیابی اولیه، صورت‌بندی راه‌حل و پاسخ‌گویی به مشتری را هدایت می‌کند و از تجربه رابط محصول در فروش آنلاین، ERP، لجستیک، پرداخت و عملیات میدانی استفاده می‌کند.',
+				'حمید از سال ۲۰۲۳ Moonlancer را همراه دوستانش به‌عنوان یک مسیر جانبی ساخته است. او ارزیابی اولیه، صورت‌بندی راه‌حل و پاسخ‌گویی به مشتری را هدایت می‌کند و رابط‌های React و Next.js را با اپلیکیشن‌های Rust و Tauri برای POS، کیوسک، پرداخت و عملیات فروشگاه روی Linux، Windows و Android ترکیب می‌کند.',
 			response: 'پاسخ ارزیابی اولیه حداکثر طی یک روز کاری.',
 			networkTitle: 'شبکه تأییدشده تحویل',
 			networkIntro:

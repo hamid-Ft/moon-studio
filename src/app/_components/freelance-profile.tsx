@@ -2,11 +2,16 @@ import {
 	ArrowUpLeft,
 	ArrowUpRight,
 	Code2,
+	CreditCard,
 	ExternalLink,
 	Mail,
 	MapPin,
+	MonitorCog,
+	PanelsTopLeft,
 	Phone,
+	TabletSmartphone,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 import { LanguageSwitcher } from "@/components/i18n/language-switcher";
@@ -20,6 +25,7 @@ const labels = {
 		portfolio: "Personal portfolio & CV",
 		nav: "CV navigation",
 		experience: "Experience",
+		platform: "Cross-platform",
 		projects: "Selected projects",
 		skills: "Skills & tools",
 		contact: "Contact",
@@ -39,6 +45,7 @@ const labels = {
 		portfolio: "پورتفولیو و رزومه شخصی",
 		nav: "ناوبری رزومه",
 		experience: "سوابق کاری",
+		platform: "چندسکویی",
 		projects: "پروژه‌های منتخب",
 		skills: "مهارت‌ها و ابزارها",
 		contact: "تماس",
@@ -62,6 +69,8 @@ const contactIcons = {
 	linkedin: ExternalLink,
 	github: Code2,
 };
+
+const platformIcons = [MonitorCog, CreditCard, TabletSmartphone, PanelsTopLeft];
 
 export function FreelanceProfile({
 	locale,
@@ -93,6 +102,7 @@ export function FreelanceProfile({
 						<span>{cv.name[locale]}</span>
 					</Link>
 					<nav aria-label={copy.nav}>
+						{cv.platform ? <a href="#platform">{copy.platform}</a> : null}
 						<a href="#experience">{copy.experience}</a>
 						<a href="#projects">{copy.projects}</a>
 						<a href="#contact">{copy.contact}</a>
@@ -101,7 +111,22 @@ export function FreelanceProfile({
 				</div>
 			</header>
 			<main id="main-content" className="cv-shell">
-				<section className="cv-intro" aria-labelledby="cv-name">
+				<section
+					className={`cv-intro${cv.portrait ? " cv-intro--with-portrait" : ""}`}
+					aria-labelledby="cv-name"
+				>
+					{cv.portrait ? (
+						<figure className="cv-intro__portrait">
+							<Image
+								src={cv.portrait.src}
+								alt={cv.portrait.alt[locale]}
+								width={1254}
+								height={1254}
+								sizes="(max-width: 767px) 160px, (max-width: 1023px) 192px, 224px"
+								priority
+							/>
+						</figure>
+					) : null}
 					<div>
 						<p className="cv-kicker">{copy.portfolio}</p>
 						<h1 id="cv-name">{cv.name[locale]}</h1>
@@ -144,6 +169,45 @@ export function FreelanceProfile({
 						</ul>
 					</aside>
 				</section>
+
+				{cv.platform ? (
+					<section
+						className="cv-section cv-platform"
+						id="platform"
+						aria-labelledby="cv-platform-title"
+					>
+						<div className="cv-platform__intro">
+							<div>
+								<p className="cv-kicker">{cv.platform.kicker[locale]}</p>
+								<h2 id="cv-platform-title">{cv.platform.title[locale]}</h2>
+							</div>
+							<p>{cv.platform.intro[locale]}</p>
+						</div>
+						<div className="cv-platform__grid">
+							{cv.platform.products.map((product, index) => {
+								const Icon = platformIcons[index];
+								return (
+									<article key={product.name.en} className="cv-platform__card">
+										<div className="cv-platform__card-meta">
+											<span>
+												{localizeDigits(
+													String(index + 1).padStart(2, "0"),
+													locale,
+												)}
+											</span>
+											<Icon aria-hidden="true" />
+										</div>
+										<h3>{product.name[locale]}</h3>
+										<p>{product.detail[locale]}</p>
+										<strong lang="en" dir="ltr">
+											{product.runtime}
+										</strong>
+									</article>
+								);
+							})}
+						</div>
+					</section>
+				) : null}
 
 				<section
 					className="cv-section"

@@ -4,18 +4,26 @@
 	"description": "Retail software that stays connected across commerce, ERP, inventory, POS, payments, and reporting.",
 	"start_url": "/en",
 	"display": "standalone",
-	"background_color": "#020617",
-	"theme_color": "#020617",
+	"background_color": "#05070a",
+	"theme_color": "#05070a",
 	"icons": [
+		{
+			"src": "/moonlancer-mark.svg",
+			"sizes": "any",
+			"type": "image/svg+xml",
+			"purpose": "any"
+		},
 		{
 			"src": "/apple-touch-icon.png",
 			"sizes": "180x180",
-			"type": "image/png"
+			"type": "image/png",
+			"purpose": "any"
 		},
 		{
 			"src": "/icon-512.png",
 			"sizes": "512x512",
-			"type": "image/png"
+			"type": "image/png",
+			"purpose": "any"
 		}
 	]
 }

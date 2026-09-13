@@ -51,7 +51,6 @@ export const intakeCopy = {
 			outcome:
 				"Describe the observable result that would make this engagement successful.",
 			stack: "ERP, POS, payment provider, databases, devices, or unknown",
-			deadline: "YYYY-MM-DD or a relevant business date",
 			name: "Your full name",
 			email: "name@company.com",
 		},
@@ -97,6 +96,8 @@ export const intakeCopy = {
 		},
 		required: "Required",
 		optional: "Optional",
+		deadlineHint:
+			"Choose the date your launch, migration, contract, or operational event depends on.",
 		select: "Select an option",
 		back: "Back",
 		next: "Continue",
@@ -109,12 +110,12 @@ export const intakeCopy = {
 		privacyLink: "Privacy notice",
 		draftNote:
 			"Your draft is saved only in this browser until submission succeeds.",
-		fallback: "If the form is unavailable, email hello@moonlancer.ir.",
+		fallback: "If the form is unavailable, email hamidfattahi.a@gmail.com.",
 		successTitle: "Your system problem has been received.",
 		successBody:
 			"Hamid will review the context and respond within one business day. A submission does not automatically promise a meeting or engagement.",
 		error:
-			"The inquiry could not be delivered. Your draft is preserved; retry or use hello@moonlancer.ir.",
+			"The inquiry could not be delivered. Your draft is preserved; retry or use hamidfattahi.a@gmail.com.",
 		verificationError:
 			"The anti-spam verification expired or failed. Refresh it and submit again.",
 		validationSummary: "Review the highlighted fields before continuing.",
@@ -170,7 +171,6 @@ export const intakeCopy = {
 			outcome:
 				"نتیجه قابل مشاهده‌ای را توضیح دهید که نشان می‌دهد همکاری موفق بوده است.",
 			stack: "ERP، POS، درگاه پرداخت، پایگاه داده، دستگاه یا نامشخص",
-			deadline: "تاریخ یا رویداد مهم کسب‌وکار",
 			name: "نام کامل شما",
 			email: "name@company.com",
 		},
@@ -216,6 +216,8 @@ export const intakeCopy = {
 		},
 		required: "الزامی",
 		optional: "اختیاری",
+		deadlineHint:
+			"تاریخ وابسته به راه‌اندازی، مهاجرت، قرارداد یا رویداد عملیاتی را انتخاب کنید.",
 		select: "یک گزینه انتخاب کنید",
 		back: "بازگشت",
 		next: "ادامه",
@@ -227,12 +229,12 @@ export const intakeCopy = {
 		privacyPrefix: "جزئیات پردازش اطلاعات را در",
 		privacyLink: "اطلاعیه حریم خصوصی",
 		draftNote: "تا پیش از ارسال موفق، پیش‌نویس فقط در همین مرورگر ذخیره می‌شود.",
-		fallback: "اگر فرم در دسترس نیست، به hello@moonlancer.ir ایمیل بزنید.",
+		fallback: "اگر فرم در دسترس نیست، به hamidfattahi.a@gmail.com ایمیل بزنید.",
 		successTitle: "مسئله سیستم شما دریافت شد.",
 		successBody:
 			"حمید اطلاعات را بررسی می‌کند و حداکثر طی یک روز کاری پاسخ می‌دهد. ارسال فرم به معنی وعده جلسه یا شروع همکاری نیست.",
 		error:
-			"درخواست ارسال نشد. پیش‌نویس محفوظ است؛ دوباره تلاش کنید یا به hello@moonlancer.ir ایمیل بزنید.",
+			"درخواست ارسال نشد. پیش‌نویس محفوظ است؛ دوباره تلاش کنید یا به hamidfattahi.a@gmail.com ایمیل بزنید.",
 		verificationError:
 			"اعتبارسنجی ضداسپم منقضی شد یا موفق نبود. آن را تازه کنید و دوباره ارسال کنید.",
 		validationSummary: "پیش از ادامه، فیلدهای مشخص‌شده را بررسی کنید.",

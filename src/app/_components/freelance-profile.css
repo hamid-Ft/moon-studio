@@ -59,6 +59,37 @@
 	gap: 4rem;
 	padding-block: 6rem;
 }
+.cv-intro--with-portrait {
+	grid-template-columns: minmax(12rem, 0.72fr) minmax(0, 1.45fr) minmax(
+			16rem,
+			0.9fr
+		);
+	gap: clamp(2rem, 4vw, 4rem);
+}
+.cv-intro__portrait {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	max-width: 14rem;
+	margin: 0;
+	border: 1px solid rgba(51, 214, 255, 0.32);
+	border-radius: 0.35rem;
+	background: var(--ink-900);
+	aspect-ratio: 1;
+}
+.cv-intro__portrait::after {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	content: "";
+	box-shadow: inset 0 0 0 1px rgba(244, 247, 251, 0.05);
+}
+.cv-intro__portrait img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
 .cv-kicker {
 	margin: 0;
 	color: var(--cyan-300);
@@ -180,6 +211,108 @@
 	height: 0.9rem;
 	flex-shrink: 0;
 	color: var(--cyan-300);
+}
+.cv-platform {
+	position: relative;
+	background:
+		radial-gradient(
+			circle at 50% 20%,
+			rgba(51, 214, 255, 0.07),
+			transparent 24rem
+		),
+		linear-gradient(180deg, rgba(13, 18, 27, 0.42), transparent);
+}
+.cv-platform::before {
+	position: absolute;
+	inset-block: 0;
+	inset-inline: calc((100vw - min(100vw - 5rem, 1180px)) / -2);
+	z-index: -1;
+	content: "";
+	background: inherit;
+}
+.cv-platform__intro {
+	display: grid;
+	grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.85fr);
+	align-items: end;
+	gap: 4rem;
+	margin-bottom: 3rem;
+}
+.cv-platform__intro h2 {
+	max-width: 16ch;
+	margin: 1rem 0 0;
+	font-size: clamp(2.2rem, 4.5vw, 4.5rem);
+	font-weight: 500;
+	letter-spacing: -0.055em;
+	line-height: 1;
+	text-wrap: balance;
+}
+.cv-platform__intro > p {
+	margin: 0;
+	color: var(--slate-300);
+	font-size: 0.95rem;
+	line-height: 1.85;
+}
+.cv-platform__grid {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	border-block-start: 1px solid var(--line);
+	border-inline-start: 1px solid var(--line);
+}
+.cv-platform__card {
+	display: flex;
+	flex-direction: column;
+	min-height: 19rem;
+	border-inline-end: 1px solid var(--line);
+	border-block-end: 1px solid var(--line);
+	padding: 1.4rem;
+	background: rgba(8, 11, 18, 0.76);
+	transition: background-color 220ms ease;
+}
+.cv-platform__card:hover {
+	background: var(--ink-850);
+}
+.cv-platform__card-meta {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: var(--cyan-300);
+	font-family: var(--font-geist-mono), monospace;
+	font-size: 0.68rem;
+}
+.cv-platform__card-meta svg {
+	width: 1.25rem;
+	height: 1.25rem;
+	stroke-width: 1.4;
+}
+.cv-platform__card h3 {
+	margin: 3rem 0 0.9rem;
+	font-size: 1.25rem;
+	font-weight: 500;
+	letter-spacing: -0.035em;
+	line-height: 1.25;
+}
+.cv-platform__card > p {
+	margin: 0 0 1.5rem;
+	color: var(--slate-300);
+	font-size: 0.82rem;
+	line-height: 1.75;
+}
+.cv-platform__card > strong {
+	display: block;
+	margin-top: auto;
+	border-block-start: 1px solid var(--line-soft);
+	padding-top: 0.9rem;
+	color: var(--cyan-300);
+	font-family: var(--font-geist-mono), monospace;
+	font-size: 0.62rem;
+	font-weight: 400;
+	line-height: 1.6;
+	text-align: start;
+}
+.cv-page[dir="rtl"] .cv-platform__intro h2,
+.cv-page[dir="rtl"] .cv-platform__card h3 {
+	letter-spacing: 0;
+	line-height: 1.5;
 }
 .cv-section {
 	border-top: 1px solid var(--line);
@@ -442,6 +575,13 @@
 		gap: 2rem;
 		padding-block: 4rem;
 	}
+	.cv-intro--with-portrait {
+		grid-template-columns: 12rem minmax(0, 1fr);
+		align-items: start;
+	}
+	.cv-intro--with-portrait .cv-services {
+		grid-column: 1 / -1;
+	}
 	.cv-services {
 		padding: 1.5rem;
 	}
@@ -453,6 +593,16 @@
 	}
 	.cv-project {
 		padding: 1.25rem;
+	}
+	.cv-platform__intro {
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
+	}
+	.cv-platform__grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	.cv-platform__card {
+		min-height: 16rem;
 	}
 }
 @media (max-width: 767px) {
@@ -480,6 +630,15 @@
 		gap: 2.5rem;
 		padding-block: 3rem;
 	}
+	.cv-intro--with-portrait {
+		grid-template-columns: 1fr;
+	}
+	.cv-intro__portrait {
+		width: 10rem;
+	}
+	.cv-intro--with-portrait .cv-services {
+		grid-column: auto;
+	}
 	.cv-intro h1 {
 		font-size: clamp(2.25rem, 10vw, 3.8rem);
 	}
@@ -504,6 +663,22 @@
 	}
 	.cv-section__heading h2 {
 		margin-top: 0.9rem;
+	}
+	.cv-platform__intro {
+		display: block;
+		margin-bottom: 2rem;
+	}
+	.cv-platform__intro > p {
+		margin-top: 1.5rem;
+	}
+	.cv-platform__grid {
+		grid-template-columns: 1fr;
+	}
+	.cv-platform__card {
+		min-height: 0;
+	}
+	.cv-platform__card h3 {
+		margin-top: 2rem;
 	}
 	.cv-timeline li {
 		grid-template-columns: 1fr;
@@ -542,10 +717,14 @@
 	}
 }
 @media print {
+	@page {
+		size: A4;
+		margin: 11mm 12mm;
+	}
 	html:has(.cv-page),
 	body:has(.cv-page) {
-		background: white;
 		min-height: auto;
+		background: white;
 	}
 	body:has(.cv-page) > .skip-link {
 		display: none;
@@ -559,7 +738,8 @@
 		--line-soft: #ddd;
 		background: white;
 		color: #111;
-		font-size: 10pt;
+		font-size: 8.5pt;
+		print-color-adjust: exact;
 	}
 	.cv-page *,
 	.cv-page *::before,
@@ -572,86 +752,221 @@
 	}
 	.cv-page .cv-header,
 	.cv-page .cv-actions,
-	.cv-page .cv-footer {
+	.cv-page .cv-footer,
+	.cv-page .cv-contact,
+	.cv-page .cv-intro__portrait {
 		display: none;
 	}
 	.cv-page .cv-intro {
-		display: block;
-		padding-block: 0 1.5rem;
+		display: grid;
+		grid-template-columns: minmax(0, 1.55fr) minmax(0, 0.85fr);
+		align-items: start;
+		gap: 7mm;
+		padding-block: 0 5mm;
 	}
 	.cv-page .cv-intro h1 {
-		font-size: 26pt;
-		margin-block: 0.5rem;
+		margin-block: 2mm 1.5mm;
+		font-size: 22pt;
+	}
+	.cv-page .cv-role {
+		font-size: 10.5pt;
+		line-height: 1.4;
 	}
 	.cv-page .cv-summary {
-		margin-block: 0.75rem;
-		line-height: 1.6;
+		margin-block: 2.5mm;
+		font-size: 8pt;
+		line-height: 1.45;
+	}
+	.cv-page .cv-location {
+		margin-block: 2mm;
+		font-size: 7.5pt;
 	}
 	.cv-page .cv-print-contacts {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.25rem 1rem;
-		margin: 0.75rem 0;
+		gap: 1mm 4mm;
+		margin: 2mm 0 0;
 		padding: 0;
 		list-style: none;
-		font-size: 9pt;
+		font-size: 7pt;
 		overflow-wrap: anywhere;
 	}
 	.cv-page .cv-services {
+		margin: 0;
 		border: 0;
+		background: white;
 		padding: 0;
-		margin-top: 1rem;
 	}
 	.cv-page .cv-services > .cv-kicker {
 		display: none;
 	}
 	.cv-page .cv-services h2 {
-		font-size: 12pt;
-		margin-block: 0.75rem;
-	}
-	.cv-page .cv-services ul {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 0.4rem 1rem;
-	}
-	.cv-page .cv-services li {
-		padding: 0;
-		border: 0;
-		font-size: 9pt;
-	}
-	.cv-page .cv-summary,
-	.cv-page .cv-job-summary {
+		margin: 0 0 2.5mm;
 		font-size: 10pt;
 	}
-	.cv-page .cv-section,
-	.cv-page .cv-contact {
-		padding-block: 1.5rem;
-	}
-	.cv-page .cv-section__heading {
-		margin-bottom: 1rem;
-	}
-	.cv-page .cv-section__heading h2,
-	.cv-page .cv-contact h2 {
-		font-size: 18pt;
-	}
-	.cv-page .cv-services,
-	.cv-page .cv-project {
-		background: white;
-		padding: 1rem;
-	}
-	.cv-page .cv-timeline li {
-		padding-block: 1rem;
-	}
-	.cv-page .cv-projects {
+	.cv-page .cv-services ul {
 		display: block;
 	}
+	.cv-page .cv-services li {
+		gap: 2mm;
+		border: 0;
+		padding: 1.5mm 0;
+		font-size: 7.5pt;
+		line-height: 1.4;
+	}
+	.cv-page .cv-section {
+		padding-block: 4mm;
+	}
+	.cv-page .cv-section__heading {
+		grid-template-columns: minmax(0, 0.7fr) minmax(0, 2.6fr);
+		gap: 5mm;
+		margin-bottom: 3mm;
+	}
+	.cv-page .cv-section__heading h2 {
+		font-size: 15pt;
+	}
+	.cv-page .cv-platform {
+		border-top: 1px solid var(--line);
+		background: white;
+		break-inside: avoid;
+	}
+	.cv-page .cv-platform::before {
+		display: none;
+	}
+	.cv-page .cv-platform__intro {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+		align-items: end;
+		gap: 7mm;
+		margin-bottom: 3mm;
+	}
+	.cv-page .cv-platform__intro h2 {
+		margin-top: 2mm;
+		font-size: 15pt;
+		line-height: 1.05;
+	}
+	.cv-page .cv-platform__intro > p {
+		margin: 0;
+		font-size: 7.5pt;
+		line-height: 1.4;
+	}
+	.cv-page .cv-platform__grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2mm;
+		border: 0;
+	}
+	.cv-page .cv-platform__card {
+		min-height: 0;
+		border: 1px solid #ddd;
+		background: white;
+		padding: 2.5mm;
+	}
+	.cv-page .cv-platform__card h3 {
+		margin: 1.5mm 0;
+		font-size: 9pt;
+	}
+	.cv-page .cv-platform__card > p {
+		margin-bottom: 2mm;
+		font-size: 7pt;
+		line-height: 1.35;
+	}
+	.cv-page .cv-platform__card > strong {
+		padding-top: 1.5mm;
+		font-size: 6.5pt;
+		line-height: 1.3;
+	}
+	.cv-page #experience {
+		break-before: page;
+	}
+	.cv-page .cv-timeline li {
+		grid-template-columns: minmax(0, 0.7fr) minmax(0, 2.6fr);
+		gap: 5mm;
+		padding-block: 4mm;
+	}
+	.cv-page .cv-timeline__date p {
+		margin-bottom: 1.5mm;
+		font-size: 7.5pt;
+		line-height: 1.35;
+	}
+	.cv-page .cv-timeline__date span {
+		padding: 0.5mm 2mm;
+		font-size: 6.5pt;
+	}
+	.cv-page .cv-timeline h3 {
+		font-size: 10.5pt;
+		line-height: 1.3;
+	}
+	.cv-page .cv-company {
+		margin-top: 1mm;
+		font-size: 8pt;
+	}
+	.cv-page .cv-job-summary {
+		margin-top: 1.5mm;
+		font-size: 8pt;
+		line-height: 1.45;
+	}
+	.cv-page #projects {
+		break-before: page;
+	}
+	.cv-page .cv-projects {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2.5mm;
+	}
 	.cv-page .cv-project {
-		margin-bottom: 0.75rem;
+		margin: 0;
+		background: white;
+		padding: 2.5mm;
 	}
 	.cv-page .cv-project h3 {
-		margin-top: 0.5rem;
+		margin: 1.5mm 0;
+		font-size: 9.5pt;
 	}
-	.cv-page .cv-contact {
-		break-inside: avoid;
+	.cv-page .cv-project > p {
+		margin-bottom: 1.5mm;
+		font-size: 7pt;
+		line-height: 1.4;
+	}
+	.cv-page .cv-project .cv-project__stack {
+		font-size: 6.5pt;
+	}
+	.cv-page .cv-project > a {
+		min-height: 0;
+		padding-top: 1.5mm;
+		font-size: 6.5pt;
+	}
+	.cv-page .cv-skills {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 3mm;
+	}
+	.cv-page .cv-skills h3 {
+		margin-bottom: 1.5mm;
+		font-size: 8pt;
+	}
+	.cv-page .cv-skills ul {
+		gap: 1mm;
+	}
+	.cv-page .cv-skills li {
+		padding: 1mm 1.5mm;
+		font-size: 6.5pt;
+	}
+	.cv-page .cv-education {
+		grid-template-columns: 1fr 1fr;
+		gap: 3mm 6mm;
+	}
+	.cv-page .cv-education article {
+		padding-inline-start: 2.5mm;
+	}
+	.cv-page .cv-education h3 {
+		margin-bottom: 1mm;
+		font-size: 8pt;
+		line-height: 1.35;
+	}
+	.cv-page .cv-education p,
+	.cv-page .cv-education .cv-education__date {
+		margin: 0.5mm 0;
+		font-size: 7pt;
+		line-height: 1.35;
 	}
 }

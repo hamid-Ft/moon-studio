@@ -2,10 +2,10 @@ import type { Locale } from "@/lib/i18n";
 
 export const retailFlowCopy = {
 	en: {
-		label: "Interactive system example",
-		caption: "Follow one sale through the system.",
+		label: "Interactive retail platform",
+		caption: "Follow one POS or kiosk sale through your system.",
 		store: "Store / 01",
-		receipt: "A sale begins.",
+		receipt: "Checkout begins.",
 		order: "Order #0042",
 		item: "Everyday essentials",
 		quantity: "3 items · 1 connected journey",
@@ -14,10 +14,10 @@ export const retailFlowCopy = {
 		sending: "Sending saved sale",
 		queued: "Waiting to sync",
 		steps: [
-			{ title: "Payment", detail: "Payment confirmed" },
-			{ title: "Inventory", detail: "Stock updated" },
-			{ title: "Warehouse", detail: "Order received" },
-			{ title: "Reporting", detail: "Sale recorded" },
+			{ title: "Payment / credit", detail: "Terms confirmed" },
+			{ title: "Inventory / ERP", detail: "Stock updated" },
+			{ title: "Fulfillment", detail: "Order received" },
+			{ title: "Control center", detail: "Sale visible" },
 		],
 		connected: "Every part, in sync.",
 		offline:
@@ -31,10 +31,10 @@ export const retailFlowCopy = {
 		noScript: "Enable JavaScript to try the outage example.",
 	},
 	fa: {
-		label: "نمونه تعاملی یک سیستم",
-		caption: "مسیر یک فروش را در سیستم دنبال کنید.",
+		label: "پلتفرم تعاملی خرده‌فروشی",
+		caption: "مسیر یک فروش POS یا کیوسک را در سیستم خود دنبال کنید.",
 		store: "فروشگاه / ۰۱",
-		receipt: "شروع یک فروش.",
+		receipt: "شروع پرداخت.",
 		order: "سفارش شماره ۰۰۴۲",
 		item: "کالاهای روزمره",
 		quantity: "۳ کالا · یک مسیر متصل",
@@ -43,10 +43,10 @@ export const retailFlowCopy = {
 		sending: "ارسال فروش ذخیره‌شده",
 		queued: "در انتظار همگام‌سازی",
 		steps: [
-			{ title: "پرداخت", detail: "پرداخت تأیید شد" },
-			{ title: "موجودی", detail: "موجودی به‌روز شد" },
-			{ title: "انبار", detail: "سفارش دریافت شد" },
-			{ title: "گزارش‌گیری", detail: "فروش ثبت شد" },
+			{ title: "پرداخت / اعتبار", detail: "شرایط تأیید شد" },
+			{ title: "موجودی / ERP", detail: "موجودی به‌روز شد" },
+			{ title: "تکمیل سفارش", detail: "سفارش دریافت شد" },
+			{ title: "مرکز کنترل", detail: "فروش قابل مشاهده است" },
 		],
 		connected: "همه‌چیز، هماهنگ با هم.",
 		offline:

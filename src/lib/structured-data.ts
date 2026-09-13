@@ -26,10 +26,11 @@ export function createProfessionalServiceJsonLd(locale: Locale) {
 		founder: {
 			"@type": "Person",
 			name: "Hamid Fattahi",
+			image: absoluteUrl("/hamid-ft.png"),
 			jobTitle:
 				locale === "fa"
-					? "بنیان‌گذار و راهبر همکاری"
-					: "Founder & Engagement Lead",
+					? "هم‌بنیان‌گذار و راهبر همکاری"
+					: "Co-founder & Engagement Lead",
 			sameAs: [founderLinkedIn],
 		},
 		areaServed: "Worldwide",

@@ -5,8 +5,13 @@ import {
 	Check,
 	Clock3,
 	ExternalLink,
+	MonitorSmartphone,
+	PanelsTopLeft,
 	ShieldCheck,
+	TabletSmartphone,
+	WalletCards,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 import { JsonLd } from "@/components/seo/json-ld";
@@ -32,6 +37,13 @@ import { RetailFlow } from "./retail-flow";
 import { Reveal } from "./reveal";
 import { StudioFooter, StudioHeader } from "./studio-chrome";
 import "./retail-hero.css";
+
+const platformIcons = [
+	MonitorSmartphone,
+	WalletCards,
+	TabletSmartphone,
+	PanelsTopLeft,
+];
 
 export async function StudioLanding({ locale }: { locale: Locale }) {
 	const copy = getSiteCopy(locale);
@@ -141,6 +153,76 @@ export async function StudioLanding({ locale }: { locale: Locale }) {
 								</li>
 							))}
 						</ul>
+					</div>
+				</section>
+
+				<section
+					className="studio-section platform-section"
+					id="solutions"
+					aria-labelledby="platform-title"
+				>
+					<div className="site-shell">
+						<Reveal className="section-heading">
+							<p className="section-kicker">{copy.platform.kicker}</p>
+							<div>
+								<h2 id="platform-title">{copy.platform.title}</h2>
+								<p>{copy.platform.intro}</p>
+							</div>
+						</Reveal>
+
+						<Reveal>
+							<article className="platform-core">
+								<div className="platform-core__signal" aria-hidden="true">
+									<span />
+									<span />
+									<span />
+								</div>
+								<div className="platform-core__copy">
+									<p className="section-kicker">{copy.platform.core.label}</p>
+									<h3>{copy.platform.core.title}</h3>
+									<p>{copy.platform.core.body}</p>
+								</div>
+								<ul className="platform-core__stack">
+									{copy.platform.core.stack.map((item) => (
+										<li key={item}>{item}</li>
+									))}
+								</ul>
+							</article>
+						</Reveal>
+
+						<div className="platform-grid">
+							{copy.platform.products.map((product, index) => {
+								const Icon = platformIcons[index];
+								return (
+									<Reveal key={product.title}>
+										<Card className="platform-card">
+											<CardHeader>
+												<div className="platform-card__meta">
+													<span>{product.number}</span>
+													<Icon aria-hidden="true" />
+												</div>
+												<CardTitle>
+													<h3>{product.title}</h3>
+												</CardTitle>
+												<CardDescription className="platform-card__description">
+													{product.body}
+												</CardDescription>
+											</CardHeader>
+											<CardContent className="platform-card__content">
+												<ul>
+													{product.features.map((feature) => (
+														<li key={feature}>{feature}</li>
+													))}
+												</ul>
+											</CardContent>
+											<CardFooter className="platform-card__footer">
+												<span>{product.platform}</span>
+											</CardFooter>
+										</Card>
+									</Reveal>
+								);
+							})}
+						</div>
 					</div>
 				</section>
 
@@ -322,8 +404,18 @@ export async function StudioLanding({ locale }: { locale: Locale }) {
 						</Reveal>
 						<Reveal>
 							<article className="founder-card">
-								<div className="founder-card__monogram" aria-hidden="true">
-									HF
+								<div className="founder-card__portrait">
+									<Image
+										src="/hamid-ft.png"
+										alt={
+											locale === "fa"
+												? "پرتره حمید فتاحی"
+												: "Portrait of Hamid Fattahi"
+										}
+										width={1254}
+										height={1254}
+										sizes="(max-width: 767px) 80px, (max-width: 1023px) 112px, 128px"
+									/>
 								</div>
 								<div>
 									<p className="section-kicker">{copy.team.founderRole}</p>

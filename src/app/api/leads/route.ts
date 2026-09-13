@@ -39,6 +39,7 @@ type LeadPayload = {
 };
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const datePattern = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
 const minimumCompletionTime = 2500;
 
 const optionSets = {
@@ -99,6 +100,17 @@ function cleanUrl(value: unknown) {
 	} catch {
 		return null;
 	}
+}
+
+function cleanDate(value: unknown) {
+	const clean = cleanOptional(value, 10);
+	if (clean === null || clean === "") return clean;
+	if (!datePattern.test(clean)) return null;
+	const date = new Date(`${clean}T00:00:00.000Z`);
+	return Number.isNaN(date.getTime()) ||
+		date.toISOString().slice(0, 10) !== clean
+		? null
+		: clean;
 }
 
 function cleanAttribution(payload: AttributionPayload | undefined) {
@@ -181,7 +193,7 @@ export async function POST(request: Request) {
 		stage: cleanOption(payload.stage, optionSets.stage),
 		urgency: cleanOption(payload.urgency, optionSets.urgency),
 		stack: cleanOptional(payload.stack, 1000),
-		deadline: cleanOptional(payload.deadline, 160),
+		deadline: cleanDate(payload.deadline),
 		budget: cleanOption(payload.budget, optionSets.budget),
 		preferredContact: cleanOption(
 			payload.preferredContact,

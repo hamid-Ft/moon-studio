@@ -1,5 +1,6 @@
 import { ArrowUpLeft, ArrowUpRight, Menu } from "lucide-react";
 import type { Route } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { LanguageSwitcher } from "@/components/i18n/language-switcher";
@@ -39,7 +40,13 @@ export function StudioHeader({
 					}
 				>
 					<span className="brand__mark" aria-hidden="true">
-						<span />
+						<Image
+							src="/moonlancer-mark.svg"
+							alt=""
+							width={28}
+							height={28}
+							priority
+						/>
 					</span>
 					<span className="brand__wordmark" lang="en" dir="ltr">
 						Moonlancer
@@ -52,7 +59,7 @@ export function StudioHeader({
 					className="site-header__nav"
 					aria-label={locale === "fa" ? "ناوبری اصلی" : "Primary navigation"}
 				>
-					<Link href={sectionLink("offers")}>{copy.nav.offers}</Link>
+					<Link href={sectionLink("solutions")}>{copy.nav.offers}</Link>
 					<Link href={sectionLink("work")}>{copy.nav.work}</Link>
 					<Link href={sectionLink("process")}>{copy.nav.process}</Link>
 					<Link href={sectionLink("team")}>{copy.nav.team}</Link>
@@ -80,7 +87,7 @@ export function StudioHeader({
 					<nav
 						aria-label={locale === "fa" ? "ناوبری موبایل" : "Mobile navigation"}
 					>
-						<Link href={sectionLink("offers")}>{copy.nav.offers}</Link>
+						<Link href={sectionLink("solutions")}>{copy.nav.offers}</Link>
 						<Link href={sectionLink("work")}>{copy.nav.work}</Link>
 						<Link href={sectionLink("process")}>{copy.nav.process}</Link>
 						<Link href={sectionLink("team")}>{copy.nav.team}</Link>

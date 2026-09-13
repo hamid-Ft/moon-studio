@@ -87,6 +87,11 @@ function newDraft(): Draft {
 	};
 }
 
+function getLocalDateInputValue(date = new Date()) {
+	const offset = date.getTimezoneOffset() * 60_000;
+	return new Date(date.getTime() - offset).toISOString().slice(0, 10);
+}
+
 function SelectField({
 	id,
 	label,
@@ -197,7 +202,9 @@ export function ProjectIntake({
 		setDeliveryStatus("idle");
 	};
 
-	const validationMessage = (kind: "required" | "email" | "detail" | "url") => {
+	const validationMessage = (
+		kind: "required" | "email" | "detail" | "url" | "date",
+	) => {
 		if (kind === "email") {
 			return locale === "fa"
 				? "یک ایمیل کاری معتبر وارد کنید."
@@ -212,6 +219,11 @@ export function ProjectIntake({
 			return locale === "fa"
 				? "نشانی کامل را با http یا https وارد کنید."
 				: "Enter a complete URL beginning with http or https.";
+		}
+		if (kind === "date") {
+			return locale === "fa"
+				? "یک تاریخ امروز یا بعد از آن انتخاب کنید."
+				: "Choose today or a future date.";
 		}
 		return copy.required;
 	};
@@ -244,6 +256,9 @@ export function ProjectIntake({
 		if (step === 2) {
 			if (!draft.urgency) next.urgency = validationMessage("required");
 			if (!draft.budget) next.budget = validationMessage("required");
+			if (draft.deadline && draft.deadline < getLocalDateInputValue()) {
+				next.deadline = validationMessage("date");
+			}
 		}
 		if (step === 3) {
 			if (!draft.name.trim()) next.name = validationMessage("required");
@@ -534,11 +549,33 @@ export function ProjectIntake({
 							</FieldLabel>
 							<Input
 								id="deadline"
+								type="date"
+								lang={locale}
+								min={hydrated ? getLocalDateInputValue() : undefined}
 								value={draft.deadline}
-								placeholder={copy.placeholders.deadline}
-								maxLength={160}
 								onChange={(event) => update("deadline", event.target.value)}
+								onBlur={(event) => {
+									if (
+										event.target.value &&
+										event.target.value < getLocalDateInputValue()
+									) {
+										setErrors((current) => ({
+											...current,
+											deadline: validationMessage("date"),
+										}));
+									}
+								}}
+								aria-invalid={Boolean(errors.deadline)}
+								aria-describedby={
+									errors.deadline
+										? "deadline-hint deadline-error"
+										: "deadline-hint"
+								}
 							/>
+							<FieldDescription id="deadline-hint">
+								{copy.deadlineHint}
+							</FieldDescription>
+							<FieldError id="deadline-error">{errors.deadline}</FieldError>
 						</Field>
 					</FieldGroup>
 				) : null}
